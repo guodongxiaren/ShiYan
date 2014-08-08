@@ -1,5 +1,8 @@
-\pagestyle{fancy}\fancyhf{}
-\fancyhead[RE]{\normalfont\small\rmfamily\nouppercase{\leftmark}}
-\fancyhead[LO]{\normalfont\small\rmfamily\nouppercase{\rightmark}}
-\fancyhead[LE,RO]{\thepage}
-\fancyfoot[LE,LO]{\smallBookTitle}
+scripting:
+  adb wait-for-device          - block until device is online
+  adb start-server             - ensure that there is a server running
+  adb kill-server              - kill the server if it is running
+  adb get-state                - prints: offline | bootloader | device
+  adb get-serialno             - prints: <serial-number>
+  adb get-devpath              - prints: <device-path>
+
