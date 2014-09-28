@@ -2,11 +2,12 @@ package shiyan2;
 import java.util.Scanner;
 
 public class Convert {
-	public static String unit[] = { "分", "角", "元", "拾", "佰", "仟", "萬" };
-	public static char num[] = { '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌',
+	public static final char unit[] = { '分','角', '元', '拾', '佰', '仟', '萬' };
+	public static final char num[] = { '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌',
 			'玖' };
 
 	public static void main(String[] args) {
+		System.out.print("请输入一个数（最多两位小数）:");
 		Scanner sc = new Scanner(System.in);
 		float f = sc.nextFloat();
 		if (f >=100000) {
