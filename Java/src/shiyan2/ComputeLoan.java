@@ -1,3 +1,4 @@
+package shiyan2;
 import java.util.Scanner;
 
 

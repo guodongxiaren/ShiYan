@@ -1,3 +1,4 @@
+package shiyan3;
 import javax.swing.*;
 public class GUIComponents {
     public static void main(String[]args) {
