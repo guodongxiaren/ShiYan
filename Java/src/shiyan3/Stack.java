@@ -3,15 +3,19 @@ package shiyan3;
 import java.util.Scanner;
 
 public class Stack {
-	final int STACKSIZE=10;
-	private int[] elem=new int[STACKSIZE];
+	int stacksize=10;
+	private int[] elem;
+	public Stack(int stacksize) {
+		elem = new int[stacksize];
+		this.stacksize = stacksize;
+	}
 	//当前栈中元素的个数
 	private int count;
 	public boolean isEmpty(){
 		return count==0?true:false;
 	}
 	public boolean isFull(){
-		return count==STACKSIZE?true:false;
+		return count==stacksize?true:false;
 	}
 	public void push(int var){
 		if(this.isFull()){
@@ -36,8 +40,10 @@ public class Stack {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Stack s = new Stack();
+		System.out.println("请输入栈的大小");
 		Scanner sc = new Scanner(System.in);
+		int size = sc.nextInt();
+		Stack s = new Stack(size);
 		int op;
 		while(true){
 			System.out.println("请选择要进行的操作：1 进栈；2 出栈 ");

@@ -3,27 +3,44 @@ package shiyan3;
 public class Complex {
 	private double real;
 	private double imaginary;
-	public void plus(Complex a){
-		System.out.println(this.real+"+"+this.imaginary+"i 和"+a.real+"+"+a.imaginary+"i ");
-		this.real+=a.getReal();
-		this.imaginary+=a.getImaginary();
-		System.out.println("相加之后，变为"+real+"+"+imaginary+"i");
+	public Complex plus(Complex a){
+		
+		double x = this.real+a.getReal();
+		double y = this.imaginary+a.getImaginary();
+		Complex tmp = new Complex(x,y);
+		return tmp;
 	}
-	public void minus(Complex a){
-		System.out.println(this.real+"+"+this.imaginary+"i 和"+a.real+"+"+a.imaginary+"i ");
-		this.real-=a.getReal();
-		this.imaginary-=a.getImaginary();
-		System.out.println("相减之后，变为"+real+"+"+imaginary+"i");
+	public Complex minus(Complex a){
+
+		double x = this.real-a.getReal();
+		double y = this.imaginary-a.getImaginary();
+		Complex tmp = new Complex(x,y);
+		return tmp;
 	}
-	public void plus(double a){
-		System.out.println(this.real+"+"+this.imaginary+"i 和"+a);
-		this.real+=a;
-		System.out.println("相加之后，变为"+real+"+"+imaginary+"i");
+	public Complex plus(double a){
+
+		double x = this.real+a;
+		double y = this.imaginary;
+		Complex tmp = new Complex(x,y);
+		return tmp;
 	}
-	public void minus(double a){
-		System.out.println(this.real+"+"+this.imaginary+"i 和"+a);
-		this.real-=a;
-		System.out.println("相减之后，变为"+real+"+"+imaginary+"i");
+	public Complex minus(double a){
+	
+		double x = this.real-a;
+		double y = this.imaginary;
+		Complex tmp = new Complex(x,y);
+		return tmp;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		if(this.imaginary>0)
+			return this.real+"+"+this.imaginary+"i";
+		else if(this.imaginary<0)
+			return this.real+""+this.imaginary+"i";
+		else
+			return this.real+"";
 	}
 	public double getReal() {
 		return real;
@@ -47,10 +64,11 @@ public class Complex {
 		Complex a = new Complex(1,2);
 		Complex b = new Complex(4,5);
 		Complex c = new Complex(2,3);
-		a.plus(b);
-		a.minus(c);
-		a.plus(12);
-		a.minus(10);
+		System.out.println(a+" 和"+b+"相加等于 "+ a.plus(b));
+		System.out.println(a+" 和"+c+"相减等于 "+a.minus(c));
+		System.out.println(a+" 和"+12+"相加等于 "+a.plus(12));
+		System.out.println(a+" 和"+10+"相减等于 "+a.minus(10));
+	
 	}
 
 }
