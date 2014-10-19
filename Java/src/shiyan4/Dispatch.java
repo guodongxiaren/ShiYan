@@ -1,7 +1,5 @@
 package shiyan4;
 
-import java.io.*;
-
 class A {
 	void callme() {
 		System.out.println("Inside A's callme()method");
