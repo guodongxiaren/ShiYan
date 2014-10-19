@@ -58,7 +58,7 @@ CREATE TABLE orders(
 	orderdate DATETIME
 );
 CREATE TABLE creditgrade(
-	creditgrade TINYINT PRIMARY KEY NOT NULL,
+	creditgradeid TINYINT PRIMARY KEY NOT NULL,
 	creditgradename VARCHAR(20)
 );
 CREATE TABLE goodstype(
