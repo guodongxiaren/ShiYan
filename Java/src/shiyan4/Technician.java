@@ -27,5 +27,4 @@ public class Technician extends Employee {
 		this.salary=basic+performance;
 		sum+=salary;
 	}
-	
 }

@@ -20,5 +20,10 @@ ALTER TABLE goodstype ADD UNIQUE(goodstypename);
 -- 设置默认约束
 ALTER TABLE customer ALTER password SET DEFAULT '000';
 ALTER TABLE supplier ALTER password SET DEFAULT '000';
+ALTER TABLE customer ALTER creditgradeid SET DEFAULT 2;
+ALTER TABLE supplier ALTER creditgradeid SET DEFAULT 2;
+ALTER TABLE creditgrade ALTER creditgradeid SET DEFAULT 2;
+ALTER TABLE goods ALTER goodstypeid SET DEFAULT 1;
+ALTER TABLE goodstype ALTER goodstypeid SET DEFAULT 1;
 /*mysql 不支持设置默认值为函数*/
 ALTER TABLE customer CHANGE logindate logindate DATETIME DEFAULT CURRENT_TIMESTAMP;

@@ -23,5 +23,4 @@ public class Saleman extends Employee {
 		this.salary=basic+performance;
 		sum+=salary;
 	}
-	
 }

@@ -23,5 +23,4 @@ public class Manager extends Employee {
 		this.salary=basic+performance;
 		sum+=salary;
 	}
-
 }
