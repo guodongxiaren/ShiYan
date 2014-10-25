@@ -27,3 +27,10 @@ ALTER TABLE goods ALTER goodstypeid SET DEFAULT 1;
 ALTER TABLE goodstype ALTER goodstypeid SET DEFAULT 1;
 /*mysql 不支持设置默认值为函数*/
 ALTER TABLE customer CHANGE logindate logindate DATETIME DEFAULT CURRENT_TIMESTAMP;
+-- 设置触发器，orders表增加一条记录，goods表减少一条记录。
+DELIMITER | 
+CREATE TRIGGER oag AFTER INSERT ON orders 
+FOR EACH ROW
+BEGIN
+DELETE FROM goods WHERE goodsid=NEW.goodsid;
+END;|
