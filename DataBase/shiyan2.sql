@@ -1,6 +1,6 @@
 USE market 
 
--- 设置外键约束 
+-- 设置外键约束  
 ALTER TABLE orders 
   ADD FOREIGN KEY(goodsid) REFERENCES goods(goodsid) 
 
@@ -19,7 +19,7 @@ ALTER TABLE customer
 ALTER TABLE supplier 
   ADD FOREIGN KEY(creditgradeid) REFERENCES creditgrade(creditgradeid) 
 
--- 设置唯一约束 
+-- 设置唯一约束  
 ALTER TABLE customer 
   ADD UNIQUE(loginname) 
 
@@ -35,13 +35,29 @@ ALTER TABLE creditgrade
 ALTER TABLE goodstype 
   ADD UNIQUE(goodstypename) 
 
--- 设置检查约束
-alter table customer add check(len(password)>=3)
-alter table supplier add check(len(password)>=3)
-alter table customer add check(zipcode like '[0-9][0-9][0-9][0-9][0-9][0-9]')
-alter table customer add check(email like '%@%')
-alter table customer add check(loginname not in ('[',']','^','_','@','#','.'))
--- 设置默认约束 
+-- 设置检查约束 
+ALTER TABLE customer 
+  ADD CHECK(Len(password)>=3) 
+
+ALTER TABLE supplier 
+  ADD CHECK(Len(password)>=3) 
+
+ALTER TABLE customer 
+  ADD CHECK(zipcode LIKE '[0-9][0-9][0-9][0-9][0-9][0-9]') 
+
+ALTER TABLE customer 
+  ADD CHECK(email LIKE '%@%') 
+
+ALTER TABLE supplier 
+  ADD CHECK(email LIKE '%@%') 
+
+ALTER TABLE customer 
+  ADD CHECK(LEFT(loginname, 1) NOT IN ('[', ']', '^', '_', '@', '#', '.')) 
+
+ALTER TABLE supplier 
+  ADD CHECK(LEFT(loginname, 1) NOT IN ('[', ']', '^', '_', '@', '#', '.')) 
+
+-- 设置默认约束  
 ALTER TABLE customer 
   ADD CONSTRAINT df_customer_password DEFAULT '000' FOR password 
 
@@ -66,8 +82,9 @@ ALTER TABLE goods
 ALTER TABLE goodstype 
   ADD CONSTRAINT df_goodstype_goodstypeid DEFAULT 1 FOR goodstypeid 
 
--- 创建触发器,orders增加一个订单,goods表中相应的减少库存量
+-- 创建触发器,orders增加一个订单,goods表中相应的减少库存量 
 go 
+
 CREATE TRIGGER orderinsert1 
 ON orders 
 after INSERT 
