@@ -32,7 +32,6 @@ public void setLength(double length) {
 			return -1;
 		else
 			return 1;
-			
 	}
 
 	@Override
