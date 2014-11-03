@@ -2,19 +2,20 @@ package shiyan5.jiekou;
 
 import java.util.Date;
 
-public class Circle implements GeometricObject {
+public class Rectangle implements GeometricObject {
 	private String color = "white";
 	private boolean filled;
 	private java.util.Date dateCreated;
-	private double radius;
+	private double width;
+	private double height;
 
-	public Circle() {
+	public Rectangle() {
 		dateCreated = new java.util.Date();
-
 	}
 
-	public Circle(double radius) {
-
+	public Rectangle(double width, double height) {
+		this.width = width;
+		this.height = height;
 	}
 
 	public String getColor() {
@@ -44,19 +45,28 @@ public class Circle implements GeometricObject {
 
 	public double getArea() {
 		// TODO Auto-generated method stub
-		return radius * radius * Math.PI;
+		return width * height;
 	}
 
 	public double getPerimeter() {
 		// TODO Auto-generated method stub
-		return 2 * radius * Math.PI;
+		return 2 * (width + height);
 	}
 
-	public double getRadius() {
-		return radius;
+	public double getWidth() {
+		return width;
 	}
 
-	public void setRadius(double radius) {
-		this.radius = radius;
+	public void setWidth(double width) {
+		this.width = width;
 	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
 }
