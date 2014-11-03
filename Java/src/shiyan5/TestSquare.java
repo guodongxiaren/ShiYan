@@ -4,7 +4,7 @@ public class TestSquare {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		GeometricObject objects[] = new Square[5];
+		GeometricObject objects[] = new GeometricObject[5];
 		objects[0] = new Square(1);
 		objects[1] = new Square(1.5, "red");
 		objects[2] = new Square(2.5);
