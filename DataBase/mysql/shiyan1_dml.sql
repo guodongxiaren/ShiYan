@@ -87,6 +87,19 @@ VALUES ( 3,
          'qwerty', 
          '湖南湘潭', 
          '0731-56769098' ); 
+INSERT supplier 
+VALUES(4, 
+       '中粮', 
+       'zhongliang', 
+       'zl123', 
+       NULL, 
+       NULL, 
+       NULL, 
+       '江西南昌', 
+       '330031', 
+       '18044445555', 
+       NULL, 
+       NULL); 
 
 SELECT * 
 FROM   supplier; 
@@ -181,7 +194,9 @@ VALUES ( 1,
        ( 2, 
          '挤压糕点' ), 
        ( 3, 
-         '豆制品' ); 
+         '豆制品' )
+       ( 4,
+	'饮料'); 
 
 SELECT * 
 FROM   goodstype; 

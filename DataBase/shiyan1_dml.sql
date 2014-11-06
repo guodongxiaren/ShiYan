@@ -87,6 +87,20 @@ VALUES( 3,
         '湖南湘潭', 
         '0731-56769098' ) 
 
+INSERT supplier 
+VALUES(4, 
+       '中粮', 
+       'zhongliang', 
+       'zl123', 
+       NULL, 
+       NULL, 
+       NULL, 
+       '江西南昌', 
+       '330031', 
+       '18044445555', 
+       NULL, 
+       NULL); 
+
 SELECT * 
 FROM   supplier 
 INSERT goods 
@@ -191,6 +205,9 @@ INSERT goodstype
 VALUES(3, 
        '豆制品') 
 
+INSERT goodstype 
+VALUES(4, 
+       '饮料')
 SELECT * 
 FROM   goodstype 
 ----更新数据

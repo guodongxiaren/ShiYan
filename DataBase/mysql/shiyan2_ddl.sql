@@ -17,6 +17,8 @@ ALTER TABLE customer ADD UNIQUE(loginname);
 ALTER TABLE supplier ADD UNIQUE(loginname),ADD UNIQUE(suppliername);
 ALTER TABLE creditgrade ADD UNIQUE(creditgradename);
 ALTER TABLE goodstype ADD UNIQUE(goodstypename);
+-- 检查约束
+/*MySQL不支持CHECK约束，可以用触发器实现。但是我还没想到如何实现*/
 -- 设置默认约束
 ALTER TABLE customer ALTER password SET DEFAULT '000';
 ALTER TABLE supplier ALTER password SET DEFAULT '000';
