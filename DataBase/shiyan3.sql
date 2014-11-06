@@ -34,7 +34,7 @@ FROM   goods,
         WHERE  orderdate BETWEEN '2005-01-01' AND '2005-06-30')AS tmp 
 WHERE  goods.goodsid = tmp.goodsid 
 GROUP  BY goodsname 
-HAVING Sum(tmp.ordersum) > 5000 
+HAVING Sum(tmp.quantity) > 5000 
 
 -- (5) 查询所有北京客户的订单信息，包括订单的序号、客户的姓名、商品名、数量
 SELECT orderid, 
