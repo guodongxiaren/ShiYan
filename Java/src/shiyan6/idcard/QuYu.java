@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class QuYu {
 	private Map<String,String> hm;
@@ -21,11 +20,9 @@ public class QuYu {
 	@SuppressWarnings("resource")
 	public boolean readTxt() {
 		boolean flag = false;
-
 		BufferedReader br = null;
 		try {
 			FileReader read = new FileReader(filename);
-
 			br = new BufferedReader(read);
 			String line;
 			String tmp[] = new String[2];
