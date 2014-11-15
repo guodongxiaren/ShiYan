@@ -1,7 +1,5 @@
 package shiyan4;
 
-import java.io.*;
-
 class SuperClass {
 	int x;
 

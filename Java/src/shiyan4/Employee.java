@@ -18,7 +18,6 @@ public class Employee {
 	protected static double sum = 0;//公司所有员工工资之和
 	protected String name; // 姓名
 	protected int id; // 工号
-	// protected int level;//工资级别
 	protected double basic;// 实发基本工资
 	protected double performance;// 业绩工资
 	protected double salary;// 月薪
@@ -36,11 +35,12 @@ public class Employee {
 
 	public void pay() {
 		System.out.println("请输入请假天数：");
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		int day = sc.nextInt();
 		basic = basic / 30 * (30 - day);
 		this.salary = basic + performance;
-		// sc.close();
+		// sc.close();//这里关闭sc会有问题
 	}
 
 	public static double sumSalary() {

@@ -9,7 +9,7 @@ public class QuYu {
 	private Map<String,String> hm;
 	//地址码
 	private String addressCode;
-	private String filename="/home/jelly/github/shiyan/id.txt";
+	private String filename="src/shiyan6/idcard/id.txt";
 
 	public QuYu(String name) {
 		this.addressCode = name;

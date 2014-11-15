@@ -10,8 +10,7 @@ public class GUIComponents {
         JCheckBox jchkItalic=new JCheckBox("Italic");
         JRadioButton jrbReb=new JRadioButton("Red");
         JRadioButton jrbYellow=new JRadioButton("Yellow");
-        //@SuppressWarnings("unchecked")
-		JComboBox jcboColor=new JComboBox(new String[] {"Freshman",
+		JComboBox<?> jcboColor=new JComboBox<Object>(new String[] {"Freshman",
                                           "Sophomore","Junior","Senior"
                                                        });
         JPanel panel = new JPanel();

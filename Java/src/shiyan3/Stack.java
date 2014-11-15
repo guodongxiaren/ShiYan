@@ -41,6 +41,7 @@ public class Stack {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("请输入栈的大小");
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		int size = sc.nextInt();
 		Stack s = new Stack(size);
@@ -62,7 +63,6 @@ public class Stack {
 				System.out.println("输入有误，请重新输入。");
 			}
 		}
-
 	}
 
 }

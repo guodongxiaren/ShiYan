@@ -12,6 +12,7 @@ public class Convert {
 		float f = sc.nextFloat();
 		if (f >=100000) {
 			System.out.println("超出范围");
+			sc.close();
 			return;
 		}
 		f *= 100;

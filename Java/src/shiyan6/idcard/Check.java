@@ -2,7 +2,7 @@ package shiyan6.idcard;
 
 public class Check {
 	private String code;
-	private String quyu;
+	private String address;
 	private String error;
 	// 每月天数。二月在下面特殊计算
 	private static int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30,
@@ -16,40 +16,52 @@ public class Check {
 	private int year;
 	private int mon;
 	private int day;
-	private boolean old;
+	//身份证的类型，旧身份证为true，新身份证为false
+	private boolean type;
 	// 男为true，女为false
 	private boolean sex;
 
 	public Check(String code) {
 		this.code = code;
 	}
-
-	public String getCode() {
-		return code;
-	}
-
 	public String getError() {
 		return error;
 	}
-
-	public void setError(String error) {
-		this.error = error;
-	}
-
 	public void setCode(String code) {
 		this.code = code;
 	}
 
-	public static void main(String args[]) {
-		Check c = new Check("930922199310173618");
-		c.isTrue();
+	public int getDay() {
+		return day;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public int getMon() {
+		return mon;
+	}
+
+	public boolean isType() {
+		return type;
+	}
+	public boolean isSex() {
+		return sex;
+	}
+
+	public void setSex(boolean sex) {
+		this.sex = sex;
+	}
 	public boolean isTrue() {
 		if (code.length() == 15)
-			old = true;
+			type = true;
 		else if (code.length() == 18)
-			old = false;
+			type = false;
 		else {
 			error = "身份证号长度错误";
 			return false;
@@ -62,7 +74,7 @@ public class Check {
 			error = "出生日期错误";
 			return false;
 		}
-		if (!old && checkCode() != code.charAt(17)) {
+		if (!type && checkCode(code) != code.charAt(17)) {
 			error = "校验码有误";
 			return false;
 		}
@@ -70,9 +82,6 @@ public class Check {
 			error = "顺序码有误";
 			return false;
 		}
-		System.out.println(quyu);
-		System.out.println(year + "年" + mon + "月" + day + "日");
-		System.out.println(sex ? "男" : "女");
 		return true;
 	}
 
@@ -83,19 +92,19 @@ public class Check {
 		// sub截取身份证号的地址部分
 		String sub = code.substring(0, 6);
 		QuYu qy = new QuYu(sub);
-		quyu = qy.getAddress();
-		if (quyu == null)
+		address = qy.getAddress();
+		if (address == null)
 			return false;
 		return true;
 	}
 
-	/**
+	/*
 	 * 判断生日的真假
 	 */
 	private boolean trueBirth() {
-		String birthday = old ? code.substring(6, 12) : code.substring(6, 14);
+		String birthday = type ? code.substring(6, 12) : code.substring(6, 14);
 		int date;
-		if (old == true)
+		if (type == true)
 			birthday = "19" + birthday;
 		try {
 			date = Integer.parseInt(birthday);
@@ -121,7 +130,7 @@ public class Check {
 	/*
 	 * 求校验码
 	 */
-	private char checkCode() {
+	private char checkCode(String code) {
 		int sum = 0;
 		for (int i = 0; i < 17; i++) {
 			int a = code.charAt(i) - '0';
@@ -137,7 +146,7 @@ public class Check {
 	 */
 	private boolean checkSex() {
 		String tmp;
-		if (old)
+		if (type)
 			tmp = code.substring(12);
 		else
 			tmp = code.substring(14, 17);
@@ -152,5 +161,18 @@ public class Check {
 			return false;
 		}
 		return true;
+	}
+	public String toNewCode(){
+	//使用StringBuffer实现字符串相加，更高效
+		StringBuffer tmp = new StringBuffer(code.substring(0,6));
+		tmp.append("19");
+		tmp.append(code.substring(6));
+		tmp.append(checkCode(tmp.toString()));
+		return tmp.toString();
+	}
+	public static void main(String[]args){
+		Check c = new Check("130922931017361");
+		c.isTrue();
+		c.toNewCode();
 	}
 }
