@@ -77,10 +77,14 @@ public class IDCard extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String code;
 			code = num.getText();
+			//去掉身份证号码前后的多余空格
+			code=code.trim();
+			num.setText(code);
 			Check c = new Check(code);
 			//如果是假身份证，弹出错误消息对话框
 			if (!c.isTrue()) {
-				JOptionPane.showMessageDialog(null, c.getError(),"错误", JOptionPane.ERROR_MESSAGE);
+				clear();
+				JOptionPane.showMessageDialog(null, c.getError(),"假身份证", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			tType.setText(c.isType() ? "旧" : "新");
@@ -92,7 +96,20 @@ public class IDCard extends JFrame {
 				lnew.setVisible(true);
 				tNew.setText(c.toNewCode());
 				tNew.setVisible(true);
+			}else{
+				lnew.setVisible(false);
+				tNew.setVisible(false);
 			}
+		}
+		/*
+		 *清空面板上的身份信息。仅当身份证号为假时，调用。 
+		 */
+		private void clear(){
+			tBirth.setText("");
+			tSex.setText("");
+			tType.setText("");
+			tAddress.setText("");
+			tNew.setText("");
 		}
 	}
 
