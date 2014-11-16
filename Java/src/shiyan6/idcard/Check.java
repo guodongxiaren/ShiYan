@@ -170,9 +170,4 @@ public class Check {
 		tmp.append(checkCode(tmp.toString()));
 		return tmp.toString();
 	}
-	public static void main(String[]args){
-		Check c = new Check("130922931017361");
-		c.isTrue();
-		c.toNewCode();
-	}
 }
