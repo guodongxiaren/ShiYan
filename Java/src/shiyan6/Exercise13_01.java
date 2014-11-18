@@ -3,7 +3,6 @@ package shiyan6;
 public class Exercise13_01 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		if (args.length != 3) {
 			System.out
 					.println("Please use Exercise13_1 operand1 operator operand2");
