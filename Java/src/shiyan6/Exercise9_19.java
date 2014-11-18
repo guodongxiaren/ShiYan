@@ -31,7 +31,7 @@ class WriteFile {
 public class Exercise9_19 {
 
 	public static void main(String[] args) {
-		WriteFile wf = new WriteFile("Exercise9_19.txt");
+		WriteFile wf = new WriteFile("src/shiyan6/Exercise9_19.txt");
 		wf.writeFile();
 	}
 }
