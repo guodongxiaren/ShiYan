@@ -1,16 +1,17 @@
 CREATE DATABASE market
 ON
-(   NAME=student_data,
-	FILENAME='E:\wangwei\sql_data\student_data.mdf',
+(   NAME=market_data,
+	FILENAME='E:\wangwei\sql_data\market_data.mdf',
 	SIZE=10,
 	FILEGROWTH=10%
 )
 LOG ON
-(   NAME=student_log,
-	FILENAME='E:\wangwei\sql_data\student_log.ldf',
+(   NAME=market_log,
+	FILENAME='E:\wangwei\sql_data\market_log.ldf',
 	SIZE=5,
 	FILEGROWTH=10%
-);
+)
+USE market
 CREATE TABLE customer(
 	customerid INT PRIMARY KEY NOT NULL,
 	customername CHAR(20) NOT NULL,
@@ -23,7 +24,7 @@ CREATE TABLE customer(
 	tel VARCHAR(40),
 	email VARCHAR(40),
 	note VARCHAR(100)
-);
+)
 CREATE TABLE supplier(
 	supplierid INT PRIMARY KEY NOT NULL,
 	suppliername CHAR(20) NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE supplier(
 	tel VARCHAR(40),
 	email VARCHAR(40),
 	note VARCHAR(100)
-);
+)
 CREATE TABLE goods(
 	goodsid INT PRIMARY KEY NOT NULL,
 	goodsname VARCHAR(20) NOT NULL,
@@ -48,7 +49,7 @@ CREATE TABLE goods(
 	description VARCHAR(100),
 	price MONEY,
 	storage INT
-);
+)
 CREATE TABLE orders(
 	orderid INT PRIMARY KEY NOT NULL,
 	customerid INT NOT NULL,
@@ -56,12 +57,12 @@ CREATE TABLE orders(
 	quantity INT,
 	ordersum MONEY,
 	orderdate DATETIME
-);
+)
 CREATE TABLE creditgrade(
 	creditgradeid TINYINT PRIMARY KEY NOT NULL,
 	creditgradename VARCHAR(20)
-);
+)
 CREATE TABLE goodstype(
 	goodstypeid INT PRIMARY KEY,
 	goodstypename VARCHAR(20)
-);
+)

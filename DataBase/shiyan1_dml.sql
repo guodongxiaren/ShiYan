@@ -1,3 +1,4 @@
+USE market
 INSERT INTO customer 
 VALUES     (1, 
             '吴垂优', 
@@ -212,6 +213,6 @@ SELECT *
 FROM   goodstype 
 ----更新数据
 UPDATE goods SET price=2.0 WHERE goodsid=1
-SELECT * FROM goods;
+SELECT * FROM goods
 DELETE FROM creditgrade WHERE creditgradeid=4
-SELECT * FROM creditgrade;
+SELECT * FROM creditgrade
