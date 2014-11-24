@@ -18,6 +18,7 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 public class TestSwingCommonFeatures extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	public TestSwingCommonFeatures(){
 		JPanel p1 = new JPanel(new FlowLayout(FlowLayout.LEFT,2,2));
 		JButton jbtLeft = new JButton("Left");
