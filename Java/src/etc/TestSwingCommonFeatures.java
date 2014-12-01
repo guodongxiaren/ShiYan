@@ -1,4 +1,4 @@
-package shiyan7;
+package etc;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -9,12 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 public class TestSwingCommonFeatures extends JFrame {
 
