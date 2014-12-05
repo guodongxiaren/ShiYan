@@ -37,7 +37,7 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 					default:
 						break;
 				}
-				System.out.println(x + ":" + y);
+				System.out.println(x + "," + y);
 				repaint();
 			}
 		});
