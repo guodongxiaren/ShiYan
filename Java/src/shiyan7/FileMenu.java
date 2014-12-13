@@ -12,11 +12,11 @@ import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 @SuppressWarnings("serial")
 public class FileMenu extends JFrame {
-	
+
 	public FileMenu() {
 		JMenuBar jmb = new JMenuBar();
 		setJMenuBar(jmb);
-		
+
 		JMenu file = new JMenu("文件");
 		JMenuItem newfile = new JMenuItem("新建");
 		JMenuItem open = new JMenuItem("打开");
@@ -27,7 +27,7 @@ public class FileMenu extends JFrame {
 		file.add(close);
 		file.add(exit);
 		jmb.add(file);
-		
+
 		JMenu edit = new JMenu("编辑");
 		JMenuItem copy = new JMenuItem("复制");
 		JMenuItem paste = new JMenuItem("粘贴");
@@ -40,7 +40,7 @@ public class FileMenu extends JFrame {
 		edit.add(replace);
 		edit.add(locate);
 		jmb.add(edit);
-		
+
 		JMenu format = new JMenu("格式");
 		JMenuItem foreground = new JMenuItem("前景色");
 		JMenuItem background = new JMenuItem("背景色");
@@ -51,25 +51,26 @@ public class FileMenu extends JFrame {
 		format.add(fontStyle);
 		format.add(fontFormat);
 		jmb.add(format);
-		
+
 		JMenu window = new JMenu("窗口");
 		jmb.add(window);
-		
+
 		JMenu help = new JMenu("帮助");
 		JMenuItem userHelp = new JMenuItem("用户帮助");
 		JMenuItem version = new JMenuItem("版本说明");
 		help.add(userHelp);
 		help.add(version);
 		jmb.add(help);
-		
-		setSize(400,300);
+
+		setSize(400, 300);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
+
 	public static void main(String[] args) throws Exception {
 		UIManager.setLookAndFeel(new WindowsLookAndFeel());
-		UIManager.put("Menu.font", new Font("微软雅黑",Font.PLAIN,15));
+		UIManager.put("Menu.font", new Font("微软雅黑", Font.PLAIN, 15));
 		new FileMenu();
 	}
 

@@ -24,7 +24,8 @@ public class Counter extends JFrame {
 	private double num2;
 	private char oper;
 	private boolean enableOper = true;
-	private boolean start=true;
+	private boolean start = true;
+	private int count;
 	// GUI对象
 	private JButton jb[] = new JButton[10];
 	private JTextField field;
@@ -76,6 +77,9 @@ public class Counter extends JFrame {
 
 	}
 
+	/*
+	 * 计算
+	 */
 	public String calc() {
 		String expr = field.getText();
 		oper = 0;
@@ -102,7 +106,6 @@ public class Counter extends JFrame {
 			break;
 		}
 		System.out.println(num1);
-		// enableOper = true;
 		return num1 + "";
 
 	}
@@ -126,6 +129,9 @@ public class Counter extends JFrame {
 		c.setVisible(true);
 	}
 
+	/*
+	 * 数字监听器
+	 */
 	class DigitListener implements ActionListener {
 
 		private int num;
@@ -136,18 +142,20 @@ public class Counter extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(start==false)
-			field.setText(field.getText().concat(num + ""));
+			if (start == false)
+				field.setText(field.getText().concat(num + ""));
 			// enableOper = true;
-			else
-				{
-				field.setText(num+"");
+			else {
+				field.setText(num + "");
 				start = false;
-				}
+			}
 		}
 
 	}
 
+	/*
+	 * 运算符监听器
+	 */
 	class OperListener implements ActionListener {
 		private char op;
 
@@ -164,11 +172,13 @@ public class Counter extends JFrame {
 				field.setText(field.getText().concat(op + ""));
 			else
 				field.setText(calc().concat(op + ""));
-			// enableOper = false;
 		}
 
 	}
 
+	/*
+	 * 小数点监听器
+	 */
 	class PointListener implements ActionListener {
 		private char ch;
 
@@ -184,12 +194,15 @@ public class Counter extends JFrame {
 
 	}
 
+	/*
+	 * 等于号监听器
+	 */
 	class EqualListenr implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			field.setText(calc());
-			start=true;
+			// start = true;
 		}
 
 	}

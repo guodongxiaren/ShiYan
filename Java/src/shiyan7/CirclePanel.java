@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 public class CirclePanel extends JPanel implements MouseWheelListener {
 
 	private int x = 50, y = 50, radius = 50;
+
 	public CirclePanel() {
 		setFocusable(true);
 		addMouseWheelListener(this);
@@ -34,8 +35,8 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 				case KeyEvent.VK_RIGHT:
 					x += 10;
 					break;
-					default:
-						break;
+				default:
+					break;
 				}
 				System.out.println(x + "," + y);
 				repaint();
@@ -62,7 +63,7 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 
 	public static void main(String[] args) {
 		CirclePanel c = new CirclePanel();
-		//创建一个JFrame用来添加CirclePanel
+		// 创建一个JFrame用来添加CirclePanel
 		JFrame frame = new JFrame();
 		frame.add(c);
 
