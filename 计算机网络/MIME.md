@@ -1,6 +1,6 @@
 MIME协议
 ========
-英文全称：**Multipurpose Internet Mail Extensions** 
+英文全称：**Multipurpose Internet Mail Extensions**   
 中文称作：通用因特网邮件扩充
 ##概述
 先看一段百度百科的摘要
@@ -24,6 +24,7 @@ SMTP有如下缺点：
 ![](images/MIME_SMTP.png)
 ##主要内容
 1. 5个新的邮件首部字段，它们可以被包含在`RFC 822`首部中。这些字段提供了有关邮件主体的信息。
+
 |字段|描述|
 |-----|-----|
 |MIME-version|标志MIME版本，习惯上是1.0
