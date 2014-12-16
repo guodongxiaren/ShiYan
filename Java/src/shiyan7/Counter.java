@@ -25,7 +25,6 @@ public class Counter extends JFrame {
 	private char oper;
 	private boolean enableOper = true;
 	private boolean start = true;
-	private int count;
 	// GUI对象
 	private JButton jb[] = new JButton[10];
 	private JTextField field;
@@ -34,10 +33,10 @@ public class Counter extends JFrame {
 		field = new JTextField();
 		add(field, BorderLayout.NORTH);
 		JPanel pa = new JPanel(new GridLayout(4, 4, 8, 8));
-		JButton jbc = new JButton("C");
+
 		JButton jbdiv = new JButton("/");
 		JButton jbmul = new JButton("*");
-		JButton jback = new JButton("←");
+	
 		JButton jbsub = new JButton("-");
 		JButton jbadd = new JButton("+");
 		JButton jbeq = new JButton("=");
