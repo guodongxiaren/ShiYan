@@ -143,7 +143,6 @@ public class Counter extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (start == false)
 				field.setText(field.getText().concat(num + ""));
-			// enableOper = true;
 			else {
 				field.setText(num + "");
 				start = false;
@@ -201,7 +200,6 @@ public class Counter extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			field.setText(calc());
-			// start = true;
 		}
 
 	}

@@ -16,7 +16,7 @@ public class FileMenu extends JFrame {
 	public FileMenu() {
 		JMenuBar jmb = new JMenuBar();
 		setJMenuBar(jmb);
-
+		// 文件菜单项
 		JMenu file = new JMenu("文件");
 		JMenuItem newfile = new JMenuItem("新建");
 		JMenuItem open = new JMenuItem("打开");
@@ -27,7 +27,7 @@ public class FileMenu extends JFrame {
 		file.add(close);
 		file.add(exit);
 		jmb.add(file);
-
+		// 编辑菜单项
 		JMenu edit = new JMenu("编辑");
 		JMenuItem copy = new JMenuItem("复制");
 		JMenuItem paste = new JMenuItem("粘贴");
@@ -40,7 +40,7 @@ public class FileMenu extends JFrame {
 		edit.add(replace);
 		edit.add(locate);
 		jmb.add(edit);
-
+		// 格式菜单项
 		JMenu format = new JMenu("格式");
 		JMenuItem foreground = new JMenuItem("前景色");
 		JMenuItem background = new JMenuItem("背景色");
@@ -51,10 +51,10 @@ public class FileMenu extends JFrame {
 		format.add(fontStyle);
 		format.add(fontFormat);
 		jmb.add(format);
-
+		// 窗口菜单项
 		JMenu window = new JMenu("窗口");
 		jmb.add(window);
-
+		// 帮助菜单项
 		JMenu help = new JMenu("帮助");
 		JMenuItem userHelp = new JMenuItem("用户帮助");
 		JMenuItem version = new JMenuItem("版本说明");
@@ -68,6 +68,7 @@ public class FileMenu extends JFrame {
 		setVisible(true);
 	}
 
+	// main函数
 	public static void main(String[] args) throws Exception {
 		UIManager.setLookAndFeel(new WindowsLookAndFeel());
 		UIManager.put("Menu.font", new Font("微软雅黑", Font.PLAIN, 15));

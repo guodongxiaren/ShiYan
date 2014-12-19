@@ -15,8 +15,10 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 	private int x = 50, y = 50, radius = 50;
 
 	public CirclePanel() {
+		// 设置该Panel获得焦点，否则键盘事件不会被它接收
 		setFocusable(true);
 		addMouseWheelListener(this);
+		// 添加按键适配器监听按键事件
 		addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -24,10 +26,10 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 				super.keyPressed(e);
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-					y += 10;
+					y -= 10;
 					break;
 				case KeyEvent.VK_DOWN:
-					y -= 10;
+					y += 10;
 					break;
 				case KeyEvent.VK_LEFT:
 					x -= 10;
@@ -38,18 +40,19 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 				default:
 					break;
 				}
-				System.out.println(x + "," + y);
 				repaint();
 			}
 		});
 	}
 
+	// 绘制圆形
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawOval(x, y, radius, radius);
 	}
 
+	// 鼠标滚轮事件监听器
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int r = e.getWheelRotation();
@@ -61,6 +64,7 @@ public class CirclePanel extends JPanel implements MouseWheelListener {
 		repaint();
 	}
 
+	// main函数
 	public static void main(String[] args) {
 		CirclePanel c = new CirclePanel();
 		// 创建一个JFrame用来添加CirclePanel

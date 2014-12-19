@@ -63,6 +63,7 @@ public class Register extends JFrame {
 		add(area, BorderLayout.SOUTH);
 	}
 
+	// main函数
 	public static void main(String[] args) throws Exception {
 		UIManager.setLookAndFeel(new WindowsLookAndFeel());
 		Register r = new Register();
@@ -72,26 +73,26 @@ public class Register extends JFrame {
 
 	}
 
+	// 确定按钮的事件监听
 	class OkListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			char[] pwd1 = pwdField1.getPassword();
 			char[] pwd2 = pwdField2.getPassword();
-			//Array类用来比较两个字符数组是否相同
-			 if(!Arrays.equals(pwd1, pwd2)){
-			 JOptionPane.showMessageDialog(null, "两次密码不一致","错误",
-			 JOptionPane.ERROR_MESSAGE);
-			 }
-			area.setText(fields[0]+'\t');
+			// Array类用来比较两个字符数组是否相同
+			if (!Arrays.equals(pwd1, pwd2)) {
+				JOptionPane.showMessageDialog(null, "两次密码不一致", "错误",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			area.setText(fields[0] + '\t');
 			area.append(nameField.getText());
-			area.append('\n' + fields[1]+'\t');
+			area.append('\n' + fields[1] + '\t');
 			area.append(new String(pwd1));
-			area.append('\n' + fields[3]+'\t');
+			area.append('\n' + fields[3] + '\t');
 			area.append((String) sexBox.getSelectedItem());
-			area.append('\n' + fields[4]+'\t');
-			// area.append();
-
+			area.append('\n' + fields[4] + '\t');
+			area.append(dateField.getText());
 		}
 	}
 }
