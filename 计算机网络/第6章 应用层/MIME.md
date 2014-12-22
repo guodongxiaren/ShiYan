@@ -21,7 +21,7 @@ SMTP有如下缺点：
 
 于是MIME应运而生。但是MIME并未改动或取代SMTP。MIME在继续使用`RFC 822`的基础上，增加了邮件主体结构，并定义了传送费ASCII码的编码规则。
 
-![](images/MIME_SMTP.png)
+![](../images/MIME_SMTP.png)
 ##主要内容
 * 5个新的邮件首部字段，它们可以被包含在`RFC 822`首部中。这些字段提供了有关邮件主体的信息。
 
