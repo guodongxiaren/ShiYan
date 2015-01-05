@@ -14,6 +14,7 @@
 精简指令系统计算机(Reduced Instruction Set Computer)  
 
 主要特点:
+
 1. 充分利用[VLSI](#vlsi)芯片的面积
    * CISC大多采用微程序控制，其控制存储器占用了CPU内大量面积
    * RISC采用组合程序控制，节约CPU空间
