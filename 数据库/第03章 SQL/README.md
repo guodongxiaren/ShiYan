@@ -19,7 +19,7 @@ SQL即是独立的语言，又是嵌入式语言。
 
 ###SQL的动词
 |SQL功能|动词
-|:-----:|:---:
+|:-----:|---
 |数据查询|SELECT
 |数据定义|CREATE、DROP、ALTER
 |数据操纵|INSERT、UPDATE、DELETE
