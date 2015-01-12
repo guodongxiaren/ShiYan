@@ -27,4 +27,24 @@ SQL即是独立的语言，又是嵌入式语言。
 
 >SELECT语句有时单独归类为DQL（数据查询语言），也有时被归类到DML（数据操纵语言）之中。
 
+###SQL基本概念
+支持SQL的RDBMS同样支持关系数据库的三级模式结构：
 
+|三级模式|对应SQL概念|
+|-----|---
+|外模式|视图（View）和部分基本表（Base Table）
+|模式|基本表
+|内模式|存储文件（Stored File）
+
+##本章样例数据库
+本章使用**学生-课程数据库**作为解读SQL语法的样例数据库。
+
+它包含三个表：
+- 学生表：Student(Sno,Sname,Ssex,Sage,Sdept)
+- 课程表：Course(Cno,Cname,Cpno,Ccredit)
+- 学生选课表：SC(Sno,Cno,Grade)
+
+>部分字段解释
+>>- Sdept表示学生所在系；
+- Cpno表示先行课、Ccredit表示课程学分；
+- Grade表示成绩
