@@ -1,7 +1,8 @@
+CC = gcc
 SRCS = $(wildcard *.c)
 OBJS = $(patsubst %.c,%,$(SRCS))
 BIN_DIR = bin
-CFLAGS = -O2 
+CFLAGS = -O2 -g
 
 ALL:$(BIN_DIR) $(OBJS) 
 

@@ -50,7 +50,10 @@ int customing(const char *myfifo,int need){
      }
      lseek(in_file,offset,SEEK_SET);
      while((read(in_file,&buff_unit,1) == 1)&&(counter < count)){
-         write(out_file,&buff_unit,1);
+         if(write(out_file,&buff_unit,1)){
+             perror("write out_file failed");
+             exit(EXIT_FAILURE);
+         }
          counter++;
      }
      close(in_file);
