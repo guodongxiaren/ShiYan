@@ -19,7 +19,8 @@ int customing(const char *myfifo,int need){
         return -1;
     }
     printf("Enjoy:");
-    lseek(fd,SEEK_SET,0);
+    // 使fd重置为文件起始位置
+    lseek(fd,0,SEEK_SET);
     while(counter < need){
         while((read(fd,&buff,1) == 1)&&(counter < need)){
             fputc(buff,stdout);
