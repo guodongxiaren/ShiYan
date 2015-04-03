@@ -1,6 +1,7 @@
 CC = gcc
 SRCS = $(wildcard *.c)
 OBJS = $(patsubst %.c,%,$(SRCS))
+TMP = *.txt
 BIN_DIR = bin
 CFLAGS = -O2 -g
 
@@ -11,5 +12,5 @@ ALL:$(BIN_DIR) $(OBJS)
 $(BIN_DIR):
 	mkdir -p $@
 clean:
-	rm $(OBJS) -rf
+	rm $(OBJS) $(TMP) -rf
 .PHONY:clean

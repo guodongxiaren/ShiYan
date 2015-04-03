@@ -11,13 +11,13 @@ const char *file2 = "file2.txt";
 
 int main(int argc,char **argv){
     int fd,fd2;
-    if((fd = open(file1,O_RDWR)) == -1){
+    if((fd = open(file1,O_CREAT|O_RDWR|O_TRUNC,0644)) == -1){
         if(errno!=EEXIST){
             perror("open failed\n");
             exit(EXIT_FAILURE);
         }
     }
-    if((fd2 = open(file2,O_CREAT|O_WRONLY,0644)) == -1){
+    if((fd2 = open(file2,O_CREAT|O_WRONLY|O_TRUNC,0644)) == -1){
         if(errno!=EEXIST){
             perror("open failed\n");
             exit(EXIT_FAILURE);
