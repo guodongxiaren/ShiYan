@@ -97,7 +97,7 @@ int main()
      srand(time(NULL));
      end_time = time(NULL) + RUN_TIME;
      /*创建有名管道*/
-     if((mkfifo(MYFIFO, O_CREAT|O_EXCL) < 0) && (errno != EEXIST))
+     if((mkfifo(MYFIFO, 0644) < 0) && (errno != EEXIST))
      {
           printf("Cannot create fifo\n");
           return errno;
