@@ -51,7 +51,7 @@ int main()
         shm_buff_inst->pid = 0;
         memset(shm_buff_inst->buffer, 0, SHM_BUFF_SZ);
         sem_v(semid);
-        sleep(2);
+        //sleep(2);
     } while(1);
 
     /* 删除共享内存到当前进程地址空间中的映射 */

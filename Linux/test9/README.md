@@ -3,7 +3,7 @@
 >实验代码是老师从网上找的，我略做修缮。
 
 ##实验步骤
-- 编译源文件`gcc -o pipe_select.c -o pipe_select`
+- 编译源文件:`make`
 - 打开三个终端
 - 终端1：运行可执行文件`./pipe_select`
 - 终端2：`cat >in1`
