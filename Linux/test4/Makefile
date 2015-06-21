@@ -3,7 +3,7 @@ SRCS = $(wildcard *.c)
 OBJS = $(patsubst %.c,%,$(SRCS))
 TMP = *.txt
 BIN_DIR = bin
-CFLAGS = -O2 -g
+CFLAGS = -g
 
 ALL:$(BIN_DIR) $(OBJS) 
 
