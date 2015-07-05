@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "HuffmanCodec.h"
 using namespace std;
 

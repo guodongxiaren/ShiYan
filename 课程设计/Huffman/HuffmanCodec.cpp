@@ -1,9 +1,9 @@
-#include "HuffmanCodec.h"
+﻿#include "HuffmanCodec.h"
 #include <iomanip>
 #include <cstdlib>
 
 /////////////////////////////////////////////////////
-// Huffman
+// HuffmanCodec
 /////////////////////////////////////////////////////
 const string HuffmanCodec::transfile = "tobetrans.txt";
 const string HuffmanCodec::codefile = "codefile.txt";
@@ -15,19 +15,25 @@ const string HuffmanCodec::treeprint = "treeprint.txt";
 HuffmanCodec::HuffmanCodec()
 {
     tree = 0;
+    __parseFile();
+    __buildTree();
+    __travel(tree, "");
 }
 
 HuffmanCodec::~HuffmanCodec()
 {
-
+    __release(tree);
 }
 
+/////////////////////////////////////////////////////
+//公开成员函数
+/////////////////////////////////////////////////////
+
+/*
+ * C：编码 
+ */
 void HuffmanCodec::coding()
 {
-    __parseFile();
-    __buildTree();
-    __travel(tree, "");
-
     infile.open(transfile.c_str());
     outfile.open(codefile.c_str());
     if (!infile)
@@ -70,6 +76,9 @@ void HuffmanCodec::coding()
     outfile.close();
 }
 
+/*
+ * D：译码 
+ */
 void HuffmanCodec::decoding()
 {
     cout<<"正在利用已建好的哈夫曼树对文件"<<codefile<<"进行译码..."<<endl;
@@ -112,6 +121,9 @@ void HuffmanCodec::decoding()
     cout<<"结果已存入"<<textfile<<"中。"<<endl;
 }
 
+/*
+ * P:打印代码文件
+ */
 void HuffmanCodec::print()
 {
     cout<<"即将打印代码文件"<<codefile<<",每行50个代码。"<<endl;
@@ -141,6 +153,9 @@ void HuffmanCodec::print()
     cout<<"同时此字符形式的编码文件已写入文件"<<codeprint<<"中。"<<endl;
 }
 
+/*
+ * T:打印Huffman树
+ */
 void HuffmanCodec::treePrint()
 {
     cout<<"正在打印哈夫曼树。将已在内存中的哈夫曼树以\"凹入表\"形式显示在终端上。"<<endl;
@@ -204,31 +219,40 @@ void HuffmanCodec::__buildTree()
     tree = nodes.top();
 }
 
-void HuffmanCodec::__travel(HuffmanNode *head, string code)
+void HuffmanCodec::__travel(HuffmanNode *root, string code)
 {
-    if (head->isLeaf())
+    if (root->isLeaf())
     {
-        char key = ((HuffmanLeaf *)head)->getData();
+        char key = ((HuffmanLeaf *)root)->getData();
         dict[key] = code;
         return;
     }
     string tmpcode = code;
-    __travel(head->getLeft(), tmpcode.append("0"));
-    __travel(head->getRight(), code.append("1"));
+    __travel(root->getLeft(), tmpcode.append("0"));
+    __travel(root->getRight(), code.append("1"));
 }
 
-void HuffmanCodec::__concaveTablePrint(HuffmanNode *head, int offset)
+void HuffmanCodec::__concaveTablePrint(HuffmanNode *root, int offset)
 {
-    if (head->isLeaf())
+    if (root->isLeaf())
     {
         return;
     }
     cout<<setw(offset + 2)<<setiosflags(ios::right);
-    cout<<head->getWeight()<<endl;
+    cout<<root->getWeight()<<endl;
 
     outfile<<setw(offset + 2)<<setiosflags(ios::right);
-    outfile<<head->getWeight()<<endl;
+    outfile<<root->getWeight()<<endl;
 
-    __concaveTablePrint(head->getLeft(), offset + 2);
-    __concaveTablePrint(head->getRight(), offset + 2);
+    __concaveTablePrint(root->getLeft(), offset + 2);
+    __concaveTablePrint(root->getRight(), offset + 2);
+}
+
+void HuffmanCodec::__release(HuffmanNode *root)
+{
+    if (!root)
+        return;
+    __release(root->getLeft());
+    __release(root->getRight());
+    delete root;
 }

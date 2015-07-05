@@ -1,4 +1,4 @@
-#ifndef _HUFFMANLEAD_H
+﻿#ifndef _HUFFMANLEAD_H
 #define _HUFFMANLEAD_H
 
 #include "HuffmanNode.h"

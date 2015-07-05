@@ -1,4 +1,4 @@
-#include "HuffmanLeaf.h"
+﻿#include "HuffmanLeaf.h"
 
 void HuffmanLeaf::setData(char data)
 {

@@ -1,4 +1,4 @@
-#ifndef _HUFFMANNODE_H
+﻿#ifndef _HUFFMANNODE_H
 #define _HUFFMANNODE_H
 
 class HuffmanNode
