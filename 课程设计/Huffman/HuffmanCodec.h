@@ -14,7 +14,16 @@ using namespace std;
 class HuffmanCodec
 {
 public:
+    static const string transfile;
+    static const string codefile;
+    static const string textfile;
+    static const string codeprint;
+    static const string treeprint;
+    static const string huffmantree;
+
     HuffmanCodec();
+    ~HuffmanCodec();
+
     void coding();
     void decoding();
     void print();
@@ -22,13 +31,13 @@ public:
 private:
     /* 私有成员函数 */
     // 解析文件
-    void parseFile();
+    void __parseFile();
     // 构建Huffman树
-    void buildTree();
+    void __buildTree();
     // 遍历huffman树
-    void travel(HuffmanNode *head, string code);
+    void __travel(HuffmanNode *head, string code);
     // 凹入表打印
-    void concaveTablePrint(HuffmanNode *head,int offset);
+    void __concaveTablePrint(HuffmanNode *head,int offset);
 
     /* 类成员 */ 
     priority_queue<HuffmanNode *, vector<HuffmanNode *>, CmpNode> nodes;
@@ -38,12 +47,6 @@ private:
     ifstream infile;
     ofstream outfile;
 
-    string transfile;
-    string codefile;
-    string textfile;
-    string codeprint;
-    string treeprint;
-    string huffmantree;
 };
 
 #endif

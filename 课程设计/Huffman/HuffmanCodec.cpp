@@ -5,32 +5,39 @@
 /////////////////////////////////////////////////////
 // Huffman
 /////////////////////////////////////////////////////
+const string HuffmanCodec::transfile = "tobetrans.txt";
+const string HuffmanCodec::codefile = "codefile.txt";
+const string HuffmanCodec::huffmantree = "huffmantree.txt";
+const string HuffmanCodec::textfile = "textfile.txt";
+const string HuffmanCodec::codeprint = "codeprint.txt";
+const string HuffmanCodec::treeprint = "treeprint.txt";
+
 HuffmanCodec::HuffmanCodec()
 {
-    transfile = "tobetrans.txt";
-    codefile = "codefile.txt";
-    huffmantree = "huffmantree.txt";
-    textfile = "textfile.txt";
-    codeprint = "codeprint.txt";
-    treeprint = "treeprint.txt";
+    tree = 0;
+}
+
+HuffmanCodec::~HuffmanCodec()
+{
+
 }
 
 void HuffmanCodec::coding()
 {
-    parseFile();
-    buildTree();
-    travel(tree, "");
+    __parseFile();
+    __buildTree();
+    __travel(tree, "");
 
     infile.open(transfile.c_str());
     outfile.open(codefile.c_str());
     if (!infile)
     {
-        cerr<<"error: unalbe to open input file: "<<transfile<<endl;
+        cerr<<"error: unable to open input file: "<<transfile<<endl;
         exit(-1);
     }
     if (!outfile)
     {
-        cerr<<"error: unalbe to open output file: "<<codefile<<endl;
+        cerr<<"error: unable to open output file: "<<codefile<<endl;
         exit(-1);
     }
 
@@ -70,12 +77,12 @@ void HuffmanCodec::decoding()
     outfile.open(textfile.c_str());
     if (!infile)
     {
-        cerr<<"error: unalbe to open input file: "<<codefile<<endl;
+        cerr<<"error: unable to open input file: "<<codefile<<endl;
         exit(-1);
     }
     if (!outfile)
     {
-        cerr<<"error: unalbe to open output file: "<<textfile<<endl;
+        cerr<<"error: unable to open output file: "<<textfile<<endl;
         exit(-1);
     }
     string line;
@@ -112,12 +119,12 @@ void HuffmanCodec::print()
     outfile.open(codeprint.c_str());
     if (!infile)
     {
-        cerr<<"error: unalbe to open input file: "<<codefile<<endl;
+        cerr<<"error: unable to open input file: "<<codefile<<endl;
         exit(-1);
     }
     if (!outfile)
     {
-        cerr<<"error: unalbe to open output file: "<<codeprint<<endl;
+        cerr<<"error: unable to open output file: "<<codeprint<<endl;
         exit(-1);
     }
     char str[55];
@@ -140,10 +147,10 @@ void HuffmanCodec::treePrint()
     outfile.open(treeprint.c_str(), ios::app);
     if (!outfile)
     {
-        cerr<<"error: unalbe to open output file: "<<treeprint<<endl;
+        cerr<<"error: unable to open output file: "<<treeprint<<endl;
         exit(-1);
     }
-    concaveTablePrint(tree, 0);
+    __concaveTablePrint(tree, 0);
     cout<<"同时此字符形式的哈夫曼树已经写入文件"<<treeprint<<"中。"<<endl;
     outfile.close();
 }
@@ -151,12 +158,12 @@ void HuffmanCodec::treePrint()
 ///////////////////////////////////////////////////////
 // 私有成员函数
 ///////////////////////////////////////////////////////
-void HuffmanCodec::parseFile()
+void HuffmanCodec::__parseFile()
 {
     infile.open(transfile.c_str());
     if (!infile)
     {
-        cerr<<"error: unalbe to open input file: "<<transfile<<endl;
+        cerr<<"error: unable to open input file: "<<transfile<<endl;
         exit(-1);
     }
     string str;
@@ -175,7 +182,7 @@ void HuffmanCodec::parseFile()
     infile.close();
 }
 
-void HuffmanCodec::buildTree()
+void HuffmanCodec::__buildTree()
 {
     for (map<char ,int>::iterator it = count.begin(); it != count.end(); it++)
     {
@@ -197,7 +204,7 @@ void HuffmanCodec::buildTree()
     tree = nodes.top();
 }
 
-void HuffmanCodec::travel(HuffmanNode *head, string code)
+void HuffmanCodec::__travel(HuffmanNode *head, string code)
 {
     if (head->isLeaf())
     {
@@ -206,11 +213,11 @@ void HuffmanCodec::travel(HuffmanNode *head, string code)
         return;
     }
     string tmpcode = code;
-    travel(head->getLeft(), tmpcode.append("0"));
-    travel(head->getRight(), code.append("1"));
+    __travel(head->getLeft(), tmpcode.append("0"));
+    __travel(head->getRight(), code.append("1"));
 }
 
-void HuffmanCodec::concaveTablePrint(HuffmanNode *head, int offset)
+void HuffmanCodec::__concaveTablePrint(HuffmanNode *head, int offset)
 {
     if (head->isLeaf())
     {
@@ -222,6 +229,6 @@ void HuffmanCodec::concaveTablePrint(HuffmanNode *head, int offset)
     outfile<<setw(offset + 2)<<setiosflags(ios::right);
     outfile<<head->getWeight()<<endl;
 
-    concaveTablePrint(head->getLeft(), offset + 2);
-    concaveTablePrint(head->getRight(), offset + 2);
+    __concaveTablePrint(head->getLeft(), offset + 2);
+    __concaveTablePrint(head->getRight(), offset + 2);
 }
