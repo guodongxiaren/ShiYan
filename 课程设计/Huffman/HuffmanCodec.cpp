@@ -5,6 +5,10 @@
 /////////////////////////////////////////////////////
 // HuffmanCodec
 /////////////////////////////////////////////////////
+/* 
+ * 静态常量字符串
+ * 用于存储要读写的文件名:
+ */
 const string HuffmanCodec::transfile = "tobetrans.txt";
 const string HuffmanCodec::codefile = "codefile.txt";
 const string HuffmanCodec::huffmantree = "huffmantree.txt";
@@ -12,6 +16,9 @@ const string HuffmanCodec::textfile = "textfile.txt";
 const string HuffmanCodec::codeprint = "codeprint.txt";
 const string HuffmanCodec::treeprint = "treeprint.txt";
 
+/* 
+ * 构造函数
+ */
 HuffmanCodec::HuffmanCodec()
 {
     tree = 0;
@@ -20,6 +27,9 @@ HuffmanCodec::HuffmanCodec()
     __travel(tree, "");
 }
 
+/* 
+ * 析构函数
+ */
 HuffmanCodec::~HuffmanCodec()
 {
     __release(tree);
