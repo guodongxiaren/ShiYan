@@ -1,5 +1,6 @@
 #include "HuffmanCodec.h"
 #include <iomanip>
+#include <cstdlib>
 
 /////////////////////////////////////////////////////
 // Huffman
@@ -20,8 +21,8 @@ void HuffmanCodec::coding()
     buildTree();
     travel(tree, "");
 
-    infile.open(transfile);
-    outfile.open(codefile);
+    infile.open(transfile.c_str());
+    outfile.open(codefile.c_str());
     if (!infile)
     {
         cerr<<"error: unalbe to open input file: "<<transfile<<endl;
@@ -33,7 +34,7 @@ void HuffmanCodec::coding()
         exit(-1);
     }
 
-    cout<<"ÕýÔÚ¶ÔÎÄ¼þ"<<transfile<<"ÖÐµÄÕýÎÄ½øÐÐ±àÂë..."<<endl;
+    cout<<"æ­£åœ¨å¯¹æ–‡ä»¶"<<transfile<<"ä¸­çš„æ­£æ–‡è¿›è¡Œç¼–ç ..."<<endl;
     string str;
     string code;
     while (getline(infile, str))
@@ -46,27 +47,27 @@ void HuffmanCodec::coding()
             outfile<<code;
         }
     }
-    cout<<"ÒëÂë½á¹ûÒÑ´æÈëÎÄ¼þ"<<codefile<<"ÖÐ¡£"<<endl;
+    cout<<"è¯‘ç ç»“æžœå·²å­˜å…¥æ–‡ä»¶"<<codefile<<"ä¸­ã€‚"<<endl;
 
-    cout<<"ÕýÔÚ½«½¨ºÃµÄ¹þ·òÂüÊ÷´æÈëÎÄ¼þ"<<huffmantree<<"ÖÐ..."<<endl;
+    cout<<"æ­£åœ¨å°†å»ºå¥½çš„å“ˆå¤«æ›¼æ ‘å­˜å…¥æ–‡ä»¶"<<huffmantree<<"ä¸­..."<<endl;
     outfile.close();
-    outfile.open(huffmantree);
+    outfile.open(huffmantree.c_str());
     map<char, string>::iterator it;
     for (it = dict.begin(); it != dict.end(); it++)
     {
         outfile<<it->first<<" "<<it->second<<endl;
 
     }
-    cout<<"ÒÑ´æÈë¡£"<<endl;
+    cout<<"å·²å­˜å…¥ã€‚"<<endl;
     infile.close();
     outfile.close();
 }
 
 void HuffmanCodec::decoding()
 {
-    cout<<"ÕýÔÚÀûÓÃÒÑ½¨ºÃµÄ¹þ·òÂüÊ÷¶ÔÎÄ¼þ"<<codefile<<"½øÐÐÒëÂë..."<<endl;
-    infile.open(codefile);
-    outfile.open(textfile);
+    cout<<"æ­£åœ¨åˆ©ç”¨å·²å»ºå¥½çš„å“ˆå¤«æ›¼æ ‘å¯¹æ–‡ä»¶"<<codefile<<"è¿›è¡Œè¯‘ç ..."<<endl;
+    infile.open(codefile.c_str());
+    outfile.open(textfile.c_str());
     if (!infile)
     {
         cerr<<"error: unalbe to open input file: "<<codefile<<endl;
@@ -101,14 +102,14 @@ void HuffmanCodec::decoding()
     }
     infile.close();
     outfile.close();
-    cout<<"½á¹ûÒÑ´æÈë"<<textfile<<"ÖÐ¡£"<<endl;
+    cout<<"ç»“æžœå·²å­˜å…¥"<<textfile<<"ä¸­ã€‚"<<endl;
 }
 
 void HuffmanCodec::print()
 {
-    cout<<"¼´½«´òÓ¡´úÂëÎÄ¼þ"<<codefile<<",Ã¿ÐÐ50¸ö´úÂë¡£"<<endl;
-    infile.open(codefile);
-    outfile.open(codeprint);
+    cout<<"å³å°†æ‰“å°ä»£ç æ–‡ä»¶"<<codefile<<",æ¯è¡Œ50ä¸ªä»£ç ã€‚"<<endl;
+    infile.open(codefile.c_str());
+    outfile.open(codeprint.c_str());
     if (!infile)
     {
         cerr<<"error: unalbe to open input file: "<<codefile<<endl;
@@ -130,29 +131,29 @@ void HuffmanCodec::print()
     }
     infile.close();
     outfile.close();
-    cout<<"Í¬Ê±´Ë×Ö·ûÐÎÊ½µÄ±àÂëÎÄ¼þÒÑÐ´ÈëÎÄ¼þ"<<codeprint<<"ÖÐ¡£"<<endl;
+    cout<<"åŒæ—¶æ­¤å­—ç¬¦å½¢å¼çš„ç¼–ç æ–‡ä»¶å·²å†™å…¥æ–‡ä»¶"<<codeprint<<"ä¸­ã€‚"<<endl;
 }
 
 void HuffmanCodec::treePrint()
 {
-    cout<<"ÕýÔÚ´òÓ¡¹þ·òÂüÊ÷¡£½«ÒÑÔÚÄÚ´æÖÐµÄ¹þ·òÂüÊ÷ÒÔ\"°¼Èë±í\"ÐÎÊ½ÏÔÊ¾ÔÚÖÕ¶ËÉÏ¡£"<<endl;
-    outfile.open(treeprint, ios::app);
+    cout<<"æ­£åœ¨æ‰“å°å“ˆå¤«æ›¼æ ‘ã€‚å°†å·²åœ¨å†…å­˜ä¸­çš„å“ˆå¤«æ›¼æ ‘ä»¥\"å‡¹å…¥è¡¨\"å½¢å¼æ˜¾ç¤ºåœ¨ç»ˆç«¯ä¸Šã€‚"<<endl;
+    outfile.open(treeprint.c_str(), ios::app);
     if (!outfile)
     {
         cerr<<"error: unalbe to open output file: "<<treeprint<<endl;
         exit(-1);
     }
     concaveTablePrint(tree, 0);
-    cout<<"Í¬Ê±´Ë×Ö·ûÐÎÊ½µÄ¹þ·òÂüÊ÷ÒÑ¾­Ð´ÈëÎÄ¼þ"<<treeprint<<"ÖÐ¡£"<<endl;
+    cout<<"åŒæ—¶æ­¤å­—ç¬¦å½¢å¼çš„å“ˆå¤«æ›¼æ ‘å·²ç»å†™å…¥æ–‡ä»¶"<<treeprint<<"ä¸­ã€‚"<<endl;
     outfile.close();
 }
 
 ///////////////////////////////////////////////////////
-// Ë½ÓÐ³ÉÔ±º¯Êý
+// ç§æœ‰æˆå‘˜å‡½æ•°
 ///////////////////////////////////////////////////////
 void HuffmanCodec::parseFile()
 {
-    infile.open(transfile);
+    infile.open(transfile.c_str());
     if (!infile)
     {
         cerr<<"error: unalbe to open input file: "<<transfile<<endl;

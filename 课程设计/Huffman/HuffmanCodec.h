@@ -20,17 +20,17 @@ public:
     void print();
     void treePrint();
 private:
-    /* Ë½ÓĞ³ÉÔ±º¯Êı */
-    // ½âÎöÎÄ¼ş
+    /* ç§æœ‰æˆå‘˜å‡½æ•° */
+    // è§£ææ–‡ä»¶
     void parseFile();
-    // ¹¹½¨HuffmanÊ÷
+    // æ„å»ºHuffmanæ ‘
     void buildTree();
-    // ±éÀúhuffmanÊ÷
+    // éå†huffmanæ ‘
     void travel(HuffmanNode *head, string code);
-    // °¼Èë±í´òÓ¡
+    // å‡¹å…¥è¡¨æ‰“å°
     void concaveTablePrint(HuffmanNode *head,int offset);
 
-    /* Àà³ÉÔ± */ 
+    /* ç±»æˆå‘˜ */ 
     priority_queue<HuffmanNode *, vector<HuffmanNode *>, CmpNode> nodes;
     map<char, int> count;
     map<char, string> dict;
