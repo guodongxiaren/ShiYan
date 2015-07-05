@@ -169,7 +169,7 @@ void HuffmanCodec::print()
 void HuffmanCodec::treePrint()
 {
     cout<<"正在打印哈夫曼树。将已在内存中的哈夫曼树以\"凹入表\"形式显示在终端上。"<<endl;
-    outfile.open(treeprint.c_str(), ios::app);
+    outfile.open(treeprint.c_str());
     if (!outfile)
     {
         cerr<<"error: unable to open output file: "<<treeprint<<endl;
