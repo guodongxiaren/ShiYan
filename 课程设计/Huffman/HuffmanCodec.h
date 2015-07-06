@@ -15,7 +15,6 @@ class HuffmanCodec
 {
 public:
     /* 静态常量字符串。必须头文件中声明，源文件中初始化 */
-    static const string transfile;
     static const string codefile;
     static const string textfile;
     static const string codeprint;
@@ -45,6 +44,8 @@ private:
     void __release(HuffmanNode * root);
 
     /* 类成员 */ 
+    // 要编码的文件名
+    string transfile;
     // 树结点的优先队列。为了便于构造Huffman树
     priority_queue<HuffmanNode *, vector<HuffmanNode *>, CmpNode> nodes;
     // 存储每种字符的个数

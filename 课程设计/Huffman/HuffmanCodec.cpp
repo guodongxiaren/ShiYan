@@ -9,7 +9,6 @@
  * 静态常量字符串
  * 用于存储要读写的文件名:
  */
-const string HuffmanCodec::transfile = "tobetrans.txt";
 const string HuffmanCodec::codefile = "codefile.txt";
 const string HuffmanCodec::huffmantree = "huffmantree.txt";
 const string HuffmanCodec::textfile = "textfile.txt";
@@ -21,10 +20,9 @@ const string HuffmanCodec::treeprint = "treeprint.txt";
  */
 HuffmanCodec::HuffmanCodec()
 {
+    transfile = "tobetrans.txt";
     tree = 0;
-    __parseFile();
-    __buildTree();
-    __travel(tree, "");
+
 }
 
 /* 
@@ -44,11 +42,14 @@ HuffmanCodec::~HuffmanCodec()
  */
 void HuffmanCodec::coding()
 {
+    __parseFile();
+    __buildTree();
+    __travel(tree, "");
     infile.open(transfile.c_str());
     outfile.open(codefile.c_str());
     if (!infile)
     {
-        cerr<<"error: unable to open input file: "<<transfile<<endl;
+        cerr<<"error:"<<transfile<<"文件不存在"<<endl;
         exit(-1);
     }
     if (!outfile)
@@ -185,12 +186,26 @@ void HuffmanCodec::treePrint()
 ///////////////////////////////////////////////////////
 void HuffmanCodec::__parseFile()
 {
-    infile.open(transfile.c_str());
-    if (!infile)
+    cin.get();
+    bool flag;
+    char name[20];
+    do
     {
-        cerr<<"error: unable to open input file: "<<transfile<<endl;
-        exit(-1);
-    }
+        cout<<"请输入要编码的文件名，默认为tobetrans.txt（直接回车）："<<endl;
+        flag = false;
+        fgets(name, sizeof(name), stdin);
+        if (name[0] != '\n')
+            transfile = string(name);
+        else
+            transfile = string("tobetrans.txt");
+        infile.open(transfile.c_str());
+        if (!infile)
+        {
+            cerr<<"error:"<<transfile<<"文件不存在"<<endl;
+            flag = true;
+        }
+
+    }while(flag);
     string str;
     while (getline(infile, str))
     {
@@ -244,15 +259,22 @@ void HuffmanCodec::__travel(HuffmanNode *root, string code)
 
 void HuffmanCodec::__concaveTablePrint(HuffmanNode *root, int offset)
 {
-    if (root->isLeaf())
+    if (!root)
     {
         return;
     }
+
     cout<<setw(offset + 2)<<setiosflags(ios::right);
-    cout<<root->getWeight()<<endl;
+    cout<<root->getWeight();
+    if (root->isLeaf())
+        cout<<"  "<<((HuffmanLeaf *)root)->getData();
+    cout<<endl;
 
     outfile<<setw(offset + 2)<<setiosflags(ios::right);
     outfile<<root->getWeight()<<endl;
+    if (root->isLeaf())
+        outfile<<":"<<((HuffmanLeaf *)root)->getData();
+    outfile<<endl;
 
     __concaveTablePrint(root->getLeft(), offset + 2);
     __concaveTablePrint(root->getRight(), offset + 2);
