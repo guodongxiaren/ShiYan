@@ -15,7 +15,7 @@
 - DES
 - 3DES
 - AES
-- RC-4*（用于SSL/TLS）*
+- RC-4
 - RC-5
 - IDEA
 
